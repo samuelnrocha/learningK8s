@@ -1,0 +1,24 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: nginx-deployment-dry-run
+  name: nginx-deployment-dry-run
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: nginx-deployment-dry-run
+  strategy: {}
+  template:
+    metadata:
+      labels:
+        app: nginx-deployment-dry-run
+    spec:
+      containers:
+      - image: nginx
+        name: nginx
+        ports:
+        - containerPort: 80
+        resources: {}
+status: {}
