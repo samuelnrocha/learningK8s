@@ -1,0 +1,26 @@
+apiVersion: apps/v1
+kind: ReplicaSet
+metadata: 
+  labels: 
+    app: netuno-app
+  name: netuno-replicaset
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: netuno-app
+  template:
+    metadata:
+      labels:
+        app: netuno-app
+    spec: 
+      containers:
+      - name: nginx
+        image: nginx:1.19.2
+        resources:
+          limits:
+            cpu: 2
+            memory: 562Mi
+          requests:
+            cpu: 1
+            memory: 258Mi
