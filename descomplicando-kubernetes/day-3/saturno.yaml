@@ -1,0 +1,36 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: saturno
+    fruta: uva
+  name: saturno
+  namespace: sistema-solar
+spec:
+  replicas: 18
+  selector:
+    matchLabels:
+      app: saturno
+  strategy:
+    type: RollingUpdate
+    rollingUpdate: 
+      maxSurge: 0
+      maxUnavailable: 1
+  template:
+    metadata:
+      labels:
+        app: saturno
+    spec:
+      containers:
+      - image: nginx:1.14.0
+        name: nginx
+        ports:
+        - containerPort: 80
+        resources:
+          limits:
+            cpu: 0.4
+            memory: 213Mi
+          requests:
+            cpu: 0.1
+            memory: 123Mi
+status:

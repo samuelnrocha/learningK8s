@@ -1,0 +1,25 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: deployment-relembrando
+  name: deployment-relembrando
+  namespace: salamance
+spec:
+  replicas: 10
+  selector:
+    matchLabels:
+      app: deployment-relembrando
+  strategy: {}
+  template:
+    metadata:
+      labels:
+        app: deployment-relembrando
+    spec:
+      containers:
+      - image: nginx:1.16.0
+        name: nginx
+        ports:
+        - containerPort: 80
+        resources: {}
+status: {}
